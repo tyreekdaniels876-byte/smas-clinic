@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMAS-лифтинг | Клиника Микрохирургия</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Базовые настройки и цвета из логотипа */
+        :root {
+            --purple: #6c2586; /* Фиолетовый из логотипа */
+            --magenta: #d9166a; /* Розово-малиновый из логотипа */
+            --bg-dark: #1b0a24; /* Темный фон для контраста */
+            --text-light: #ffffff;
+            --gradient: linear-gradient(135deg, var(--purple) 0%, var(--magenta) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Шапка */
+        header {
+            background-color: rgba(27, 10, 36, 0.95);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .clinic-info {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .clinic-info strong {
+            color: #fff;
+            font-size: 16px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Логотип справа, как просили */
+        .logo {
+            text-align: right;
+            background: #fff; /* Белая подложка для читаемости логотипа */
+            padding: 5px 15px;
+            border-radius: 8px;
+        }
+
+        .logo img {
+            height: 50px;
+            object-fit: contain;
+        }
+
+        /* Главный экран (Hero) */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(27, 10, 36, 0.8), rgba(27, 10, 36, 0.9)), url('https://images.unsplash.com/photo-1614859324967-bdf4bfdb9fa7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero p.subtitle {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--gradient);
+            color: #fff;
+            padding: 20px 40px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-transform: uppercase;
+            box-shadow: 0 10px 20px rgba(217, 22, 106, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(217, 22, 106, 0.5);
+        }
+
+        /* Блок "Что делает SMAS" */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        .section-title span {
+            color: var(--magenta);
+        }
+
+        .quote {
+            text-align: center;
+            font-size: 22px;
+            font-style: italic;
+            color: #e0e0e0;
+            margin-bottom: 60px;
+            border-left: 4px solid var(--purple);
+            border-right: 4px solid var(--purple);
+            padding: 10px 20px;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefits-list li {
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .benefits-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: -2px;
+            color: var(--magenta);
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Преимущества карточки */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--purple);
+        }
+
+        .card-number {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--magenta);
+            margin-bottom: 15px;
+        }
+
+        /* О клинике */
+        .clinic-section {
+            background: linear-gradient(135deg, #130619 0%, #2a0f35 100%);
+            border-top: 2px solid var(--purple);
+            border-bottom: 2px solid var(--magenta);
+        }
+
+        .stats-wrap {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            margin: 20px;
+        }
+        
+        .stat-item h3 {
+            font-size: 48px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Блок Консультации (Лид-магнит) */
+        .consultation-box {
+            background: #fff;
+            color: #000;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .consultation-box h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--purple);
+        }
+
+        .consultation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .consultation-step {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--magenta);
+        }
+
+        .consultation-step h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Адаптив для телефонов */
+        @media (max-width: 768px) {
+            h1 { font-size: 32px; }
+            .hero p.subtitle { font-size: 18px; }
+            .grid-2, .grid-3, .consultation-grid { grid-template-columns: 1fr; }
+            .header-inner { flex-direction: column-reverse; gap: 15px; text-align: center; }
+            .logo { text-align: center; width: 100%; }
+            .quote { font-size: 18px; }
+            .hero { padding: 220px 0 60px; }
+            .consultation-box { padding: 30px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="clinic-info">
+                <strong>Клиника «Микрохирургия»</strong>
+                Медицинская лицензия | 28 лет на рынке
+            </div>
+            <div class="logo">
+                <img src="logo.jpg" alt="Клиника косметологии МИКРОХИРУРГИЯ">
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Омоложение на 10 лет<br>за 1 сеанс!</h1>
+            <p class="subtitle">SMAS-лифтинг без боли, уколов и реабилитации</p>
+            <p style="margin-bottom: 40px; font-size: 18px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Единственная аппаратная методика, дающая реальный лифтинг-эффект, сравнимый с пластической хирургией. Мы работаем с тем же глубоким слоем (SMAS), что и хирурги, но без скальпеля и повреждений кожи.
+            </p>
+            <a href="#consult" class="btn">Записаться на бесплатную консультацию</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center;">
+                <div class="quote">«Ты точно что-то делала, но не пойму что!»</div>
+            </div>
+            
+            <h2 class="section-title">Что делает <span>SMAS-лифтинг?</span></h2>
+            <div class="grid-2">
+                <div>
+                    <ul class="benefits-list">
+                        <li><strong>Подтягивает овал лица</strong> и возвращает чёткие контуры</li>
+                        <li><strong>Убирает «брыли»</strong> и второй подбородок</li>
+                        <li><strong>Поднимает скулы</strong> и уголки губ</li>
+                        <li><strong>Разглаживает морщины</strong> и носогубные складки</li>
+                        <li><strong>Запускает выработку коллагена</strong> для упругости кожи</li>
+                    </ul>
+                    <p style="margin-top: 30px; font-size: 18px; color: #ccc;">
+                        И всё это — за одну процедуру. Результат формируется в течение 2–3 месяцев и <strong>держится до 1,5 - 2 лет!</strong>
+                    </p>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); padding: 40px; border-radius: 20px; text-align: center;">
+                    <h3 style="font-size: 24px; margin-bottom: 20px; color: var(--magenta);">Кому идеально подойдет?</h3>
+                    <p style="margin-bottom: 15px;">✓ Если появились возрастные изменения, а вы не готовы к радикальным хирургическим мерам.</p>
+                    <p style="margin-bottom: 15px;">✓ Женщинам после 35 лет, когда начинается гравитационное старение (опущение тканей).</p>
+                    <p>✓ Когда хочется выглядеть моложе на 5-10 лет, но при этом максимально <strong>естественно</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section clinic-section">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают <span>«Микрохирургию»?</span></h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 18px;">
+                Клиника косметологии «Микрохирургия» — это место, которое рекомендуют подругам и доверяют самое ценное. Ваша молодость — в ваших руках. А мы поможем её сохранить.
+            </p>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-number">28</div>
+                    <h3>Лет на рынке</h3>
+                    <p>Безупречная репутация и тысячи довольных пациентов.</p>
+                </div>
+                <div class="card">
+                    <div class="card-number">💯</div>
+                    <h3>Мед. лицензия</h3>
+                    <p>Строгое соблюдение медицинских стандартов и безопасности.</p>
+                </div>
+                <div class="card">
+                    <div class="card-number">500+</div>
+                    <h3>Сделали SMAS</h3>
+                    <p>Наших клиенток уже испытали на себе этот невероятный эффект.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="consult">
+        <div class="container">
+            <div class="consultation-box">
+                <h2>Сделайте первый шаг к молодости — бесплатно</h2>
+                <p style="font-size: 18px; color: #555;">Запишитесь на консультацию к нашему врачу-косметологу. Времени минимум — результата максимум!</p>
+                
+                <div class="consultation-grid">
+                    <div class="consultation-step">
+                        <h4>1. Оценка состояния кожи</h4>
+                        <p>Определим степень возрастных изменений и выявим проблемные зоны.</p>
+                    </div>
+                    <div class="consultation-step">
+                        <h4>2. Определение показаний</h4>
+                        <p>Честно скажем, подойдет ли вам SMAS-лифтинг или эффективнее другой метод.</p>
+                    </div>
+                    <div class="consultation-step">
+                        <h4>3. Персональный прогноз</h4>
+                        <p>Покажем и расскажем, какой именно результат даст процедура на вашем лице.</p>
+                    </div>
+                    <div class="consultation-step">
+                        <h4>4. Индивидуальный план</h4>
+                        <p>Составим пошаговый план омоложения с учётом ваших целей и бюджета.</p>
+                    </div>
+                </div>
+
+                <button class="btn" style="width: 100%; max-width: 400px;">Записаться бесплатно</button>
+                <p style="margin-top: 15px; font-size: 12px; color: #999;">Нажимая на кнопку, вы соглашаетесь с политикой конфиденциальности.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 30px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 50px;">
+        <p style="color: #666; font-size: 14px;">© 2024 Клиника косметологии «Микрохирургия». Имеются противопоказания, необходима консультация специалиста.</p>
+    </footer>
+
+</body>
+</html>
