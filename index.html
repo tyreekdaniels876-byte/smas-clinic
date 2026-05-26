@@ -208,16 +208,17 @@
             <h2 style="margin-bottom: 5px; font-size: 28px;">Запишитесь на процедуру</h2>
             <p style="margin-bottom: 25px; font-size: 18px; font-weight: 600; color: #ffd6e8;">SMAS-лифтинг</p>
             
-            <form onsubmit="event.preventDefault(); alert('Отлично! Форма работает. Позже мы привяжем сюда отправку на почту.'); closeModal();">
-                <input type="text" placeholder="Имя" required>
-                <input type="tel" placeholder="Телефон" required>
-                <button type="submit" class="submit-btn">Записаться</button>
-                
-                <div class="checkbox-group">
-                    <input type="checkbox" id="agree" required checked>
-                    <label for="agree">Да, я принимаю условия. Нажимая на кнопку, вы соглашаетесь с политикой по обработке персональных данных.</label>
-                </div>
-            </form>
+<form action="https://formspree.io/f/xkoepodo" method="POST">
+    <input type="text" name="Имя" placeholder="Имя" required>
+    <input type="tel" name="Телефон" placeholder="Телефон" required>
+    
+    <button type="submit" class="submit-btn">Записаться</button>
+    
+    <div class="checkbox-group">
+        <input type="checkbox" id="agree" required checked>
+        <label for="agree">Да, я принимаю условия. Нажимая на кнопку, вы соглашаетесь с политикой по обработке персональных данных.</label>
+    </div>
+</form>
         </div>
     </div>
 
