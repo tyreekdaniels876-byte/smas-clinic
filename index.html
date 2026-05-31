@@ -35,14 +35,12 @@
         header { background-color: rgba(253, 251, 247, 0.95); padding: 10px 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .header-inner { display: flex; justify-content: space-between; align-items: center; }
         
-        .clinic-info { font-size: 14px; color: var(--text-dark); }
-        .header-phone { text-decoration: none; color: var(--purple); font-weight: 700; font-size: 18px; transition: 0.3s; }
-        
         .logo { z-index: 1001; }
         .logo img { max-height: 40px; max-width: 100%; width: auto; object-fit: contain; }
 
         .nav-menu { display: flex; gap: 20px; list-style: none; transition: 0.3s; }
-        .nav-menu a { color: var(--text-dark); text-decoration: none; font-weight: 600; font-size: 14px; transition: color 0.3s; text-transform: uppercase; }
+        /* white-space: nowrap; запрещает перенос текста на новую строку */
+        .nav-menu a { color: var(--text-dark); text-decoration: none; font-weight: 600; font-size: 14px; transition: color 0.3s; text-transform: uppercase; white-space: nowrap; }
         .nav-menu a:hover { color: var(--magenta); }
 
         .hamburger { display: none; cursor: pointer; z-index: 1001; }
@@ -89,11 +87,9 @@
         .doctor-info h3 { font-size: 28px; margin-bottom: 10px; color: var(--purple); }
         .doctor-info h4 { font-size: 18px; color: var(--magenta); margin-bottom: 20px; font-weight: 600; }
         .resume-list { list-style: none; margin-bottom: 20px; }
-        
-        /* Исправленный список для телефона */
         .resume-list li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; font-size: 16px; }
-        .resume-list li::before { content: '🏆'; font-size: 20px; flex-shrink: 0; } /* flex-shrink не дает иконке сжиматься */
-        .resume-list li span { display: block; } /* Текст держится единым блоком */
+        .resume-list li::before { content: '🏆'; font-size: 20px; flex-shrink: 0; }
+        .resume-list li span { display: block; }
 
         /* --- FAQ --- */
         .faq-container { max-width: 800px; margin: 0 auto; }
@@ -127,14 +123,11 @@
             .grid-2, .consultation-grid, .doctor-card { grid-template-columns: 1fr; flex-direction: column; }
             h1 { font-size: 32px; } 
             
-            /* Исправление заголовка: перенос слов, чтобы не вылазил */
             .section-title { font-size: 26px; margin-bottom: 30px; word-wrap: break-word; hyphens: auto; }
             
-            /* Исправление шапки: выравнивание логотипа и гамбургера */
             .header-inner { flex-direction: row; justify-content: space-between; align-items: center; padding: 5px 10px; }
             .logo { max-width: 70%; text-align: left; }
             .logo img { max-height: 35px; }
-            .clinic-info { display: none; } /* Прячем инфо в шапке на мобилках для чистоты */
             
             .hamburger { display: block; margin-left: auto; }
             .nav-menu { position: fixed; right: -100%; top: 0; flex-direction: column; background: var(--cream-light); width: 250px; height: 100vh; padding-top: 80px; align-items: center; border-left: 2px solid var(--purple); box-shadow: -5px 0 15px rgba(0,0,0,0.1); }
@@ -156,11 +149,6 @@
         <div class="container header-inner">
             <div class="logo">
                 <img src="new_logo.png" alt="МИКРОХИРУРГИЯ">
-            </div>
-            
-            <div class="clinic-info">
-                <strong>Клиника «Микрохирургия»</strong>
-                <a href="tel:+73952564128" class="header-phone">8 (395) 256-41-28</a>
             </div>
 
             <ul class="nav-menu">
