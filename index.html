@@ -9,7 +9,7 @@
 
     <style>
         :root {
-            var(--purple): #6c2586;
+            --purple: #6c2586;
             --magenta: #d9166a;
             --cream-light: #fdfbf7;
             --cream-pink: #faeef1;
@@ -320,29 +320,27 @@
     
     <script>
         // --- 1. НАСТРОЙКИ ТЕЛЕГРАМ БОТА ---
-        // Вставь свои данные между кавычек!
         const TOKEN = "8748366719:AAFClWas5yAoWTRPDlCp8tX3v7fK6ghAS8A"; 
         const CHAT_ID = "-5199999120"; 
-        const URI_API = `https://api.telegram.org/bot${8748366719:AAFClWas5yAoWTRPDlCp8tX3v7fK6ghAS8A}/sendMessage`;
+        
+        // ВНИМАНИЕ: Здесь использована переменная TOKEN, а не сам токен внутри строки!
+        const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
 
         // --- 2. ОТПРАВКА ФОРМЫ В ТЕЛЕГРАМ ---
         document.getElementById('tgForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Останавливаем стандартную перезагрузку страницы
+            e.preventDefault(); 
 
             const name = document.getElementById('userName').value;
             const phone = document.getElementById('userPhone').value;
             const btn = document.querySelector('.submit-btn');
 
-            // Формируем сообщение
             let message = `<b>🔥 Новая заявка с сайта! (SMAS-лифтинг)</b>\n`;
             message += `<b>Имя:</b> ${name}\n`;
             message += `<b>Телефон:</b> ${phone}`;
 
-            // Меняем текст кнопки на время отправки
             const oldText = btn.textContent;
             btn.textContent = 'Отправка...';
 
-            // Отправляем запрос
             fetch(URI_API, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -355,8 +353,8 @@
             .then(response => {
                 if(response.ok) {
                     alert('Заявка успешно отправлена! Мы скоро свяжемся с вами.');
-                    this.reset(); // Очищаем форму
-                    closeModal(); // Закрываем окно
+                    this.reset(); 
+                    closeModal(); 
                 } else {
                     alert('Произошла ошибка. Попробуйте еще раз.');
                 }
@@ -366,11 +364,11 @@
                 alert('Ошибка сети. Проверьте подключение к интернету.');
             })
             .finally(() => {
-                btn.textContent = oldText; // Возвращаем кнопке старый текст
+                btn.textContent = oldText; 
             });
         });
 
-        // --- ОСТАЛЬНЫЕ СКРИПТЫ (Модалка, Свайпер, Меню) ---
+        // --- ОСТАЛЬНЫЕ СКРИПТЫ ---
         const modal = document.getElementById("bookingModal");
         function openModal() { modal.style.display = "block"; }
         function closeModal() { modal.style.display = "none"; }
