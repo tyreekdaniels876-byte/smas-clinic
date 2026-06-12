@@ -323,8 +323,8 @@
         const TOKEN = "8748366719:AAFClWas5yAoWTRPDlCp8tX3v7fK6ghAS8A"; 
         const CHAT_ID = "358530431"; 
         
-        // ВНИМАНИЕ: Здесь использована переменная TOKEN, а не сам токен внутри строки!
-        const URI_API = `https://api.telegram.org/bot${8748366719:AAFClWas5yAoWTRPDlCp8tX3v7fK6ghAS8A}/sendMessage`;
+        // ВНИМАНИЕ: Здесь должна быть вписана только переменная ${TOKEN}!
+        const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
 
         // --- 2. ОТПРАВКА ФОРМЫ В ТЕЛЕГРАМ ---
         document.getElementById('tgForm').addEventListener('submit', function(e) {
