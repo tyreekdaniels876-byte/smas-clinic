@@ -304,70 +304,20 @@
             <h2 style="margin-bottom: 5px; font-size: 28px; color: #6c2586;">Запишитесь на процедуру</h2>
             <p style="margin-bottom: 25px; font-size: 18px; font-weight: 600; color: var(--magenta);">SMAS-лифтинг</p>
             
-            <form id="tgForm">
-                <input type="text" id="userName" placeholder="Имя" required>
-                <input type="tel" id="userPhone" placeholder="Телефон" required>
-                <button type="submit" class="submit-btn">Записаться</button>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="agree" required checked>
-                    <label for="agree">Да, я принимаю условия. Нажимая на кнопку, вы соглашаетесь с политикой по обработке ПД.</label>
-                </div>
+           <div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 style="margin-bottom: 5px; font-size: 28px; color: #6c2586;">Запишитесь на процедуру</h2>
+        <p style="margin-bottom: 25px; font-size: 18px; font-weight: 600; color: var(--magenta);">SMAS-лифтинг</p>
+        
+        <!-- Вот сюда встал код Яндекса -->
+        <script src="https://forms.yandex.ru/_static/embed.js"></script><iframe src=width="100%""https://forms.yandex.ru/cloud/6a310e306d2d732105fd2961?ifram…" frameborder="0" name="ya-form-6a310e306d2d732105fd2961" width="650"></iframe>
             </form>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    
     <script>
-        // --- 1. НАСТРОЙКИ ТЕЛЕГРАМ БОТА ---
-        const TOKEN = "8748366719:AAFClWas5yAoWTRPDlCp8tX3v7fK6ghAS8A"; 
-        const CHAT_ID = "358530431"; 
         
-        // ВНИМАНИЕ: Здесь должна быть вписана только переменная ${TOKEN}!
-        const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
-
-        // --- 2. ОТПРАВКА ФОРМЫ В ТЕЛЕГРАМ ---
-        document.getElementById('tgForm').addEventListener('submit', function(e) {
-            e.preventDefault(); 
-
-            const name = document.getElementById('userName').value;
-            const phone = document.getElementById('userPhone').value;
-            const btn = document.querySelector('.submit-btn');
-
-            let message = `<b>🔥 Новая заявка с сайта! (SMAS-лифтинг)</b>\n`;
-            message += `<b>Имя:</b> ${name}\n`;
-            message += `<b>Телефон:</b> ${phone}`;
-
-            const oldText = btn.textContent;
-            btn.textContent = 'Отправка...';
-
-            fetch(URI_API, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: CHAT_ID,
-                    text: message,
-                    parse_mode: 'html'
-                })
-            })
-            .then(response => {
-                if(response.ok) {
-                    alert('Заявка успешно отправлена! Мы скоро свяжемся с вами.');
-                    this.reset(); 
-                    closeModal(); 
-                } else {
-                    alert('Произошла ошибка. Попробуйте еще раз.');
-                }
-            })
-            .catch(error => {
-                console.error(error);
-                alert('Ошибка сети. Проверьте подключение к интернету.');
-            })
-            .finally(() => {
-                btn.textContent = oldText; 
-            });
-        });
-
         // --- ОСТАЛЬНЫЕ СКРИПТЫ ---
         const modal = document.getElementById("bookingModal");
         function openModal() { modal.style.display = "block"; }
