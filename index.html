@@ -60,12 +60,12 @@
         .benefits-list li { font-size: 18px; margin-bottom: 15px; padding-left: 25px; position: relative; text-align: justify; line-height: 1.3; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
         .benefits-list li::before { content: '✓'; position: absolute; left: -5px; top: -2px; color: var(--magenta); font-size: 24px; font-weight: bold; }
 
-       /* Результаты */
-        /* Сузили контейнер и отцентрировали его, чтобы убрать белые поля по бокам */
-        .slider-wrap { background: #fff; padding: 0; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(108, 37, 134, 0.1); overflow: hidden; max-width: 400px; margin: 0 auto; }
-        .swiper { width: 100%; height: 550px; border-radius: 20px; }
+      /* Результаты */
+        .slider-wrap { max-width: 900px; margin: 0 auto; background: transparent; }
+        .swiper { width: 100%; height: 550px; }
         .swiper-slide { display: flex; justify-content: center; align-items: center; background: transparent; }
-        .swiper-slide img, .swiper-slide video { width: 100%; height: 100%; object-fit: cover; }
+        /* Убрали жесткую ширину, теперь медиафайлы принимают свой естественный размер со скруглением */
+        .swiper-slide img, .swiper-slide video { width: auto; max-width: 100%; height: 100%; object-fit: contain; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .swiper-button-next, .swiper-button-prev { color: var(--magenta) !important; }
         .swiper-pagination-bullet-active { background: var(--magenta) !important; }
         
