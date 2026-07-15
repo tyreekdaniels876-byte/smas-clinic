@@ -30,7 +30,6 @@
         header { background-color: rgba(253, 251, 247, 0.95); padding: 10px 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .header-inner { display: flex; justify-content: space-between; align-items: center; }
         .logo { z-index: 1001; }
-        /* mix-blend-mode: multiply убирает белый фон у jpeg картинок */
         .logo img { max-height: 40px; max-width: 100%; width: auto; object-fit: contain; mix-blend-mode: multiply; }
 
         .nav-menu { display: flex; gap: 20px; list-style: none; transition: 0.3s; }
@@ -56,15 +55,13 @@
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
         .benefits-card { background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left; border: 1px solid rgba(108, 37, 134, 0.1); }
         .benefits-list { list-style: none; }
-        /* Выравнивание по ширине, сдвиг галочек левее и интервал */
         .benefits-list li { font-size: 18px; margin-bottom: 15px; padding-left: 25px; position: relative; text-align: justify; line-height: 1.3; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
         .benefits-list li::before { content: '✓'; position: absolute; left: -5px; top: -2px; color: var(--magenta); font-size: 24px; font-weight: bold; }
 
-      /* Результаты */
+        /* Результаты */
         .slider-wrap { max-width: 900px; margin: 0 auto; background: transparent; }
         .swiper { width: 100%; height: 550px; }
         .swiper-slide { display: flex; justify-content: center; align-items: center; background: transparent; }
-        /* Убрали жесткую ширину, теперь медиафайлы принимают свой естественный размер со скруглением */
         .swiper-slide img, .swiper-slide video { width: auto; max-width: 100%; height: 100%; object-fit: contain; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .swiper-button-next, .swiper-button-prev { color: var(--magenta) !important; }
         .swiper-pagination-bullet-active { background: var(--magenta) !important; }
@@ -88,6 +85,90 @@
         .resume-list li::before { content: '🏆'; font-size: 20px; flex-shrink: 0; }
         .resume-list li span { display: block; }
 
+        /* === НОВЫЙ БЛОК: ОТЗЫВЫ 2ГИС === */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .review-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(108, 37, 134, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(217, 22, 106, 0.15);
+            border-color: rgba(217, 22, 106, 0.3);
+        }
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .reviewer-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--gradient);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .reviewer-name {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 16px;
+        }
+        .review-date {
+            font-size: 13px;
+            color: #888;
+            margin-top: 2px;
+        }
+        .gis-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--cream-pink);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--purple);
+        }
+        .review-rating {
+            color: var(--magenta);
+            font-size: 20px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        .review-text {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-dark);
+            text-align: justify;
+            flex-grow: 1;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
+        }
+
         /* FAQ */
         .faq-container { max-width: 800px; margin: 0 auto; }
         .faq-item { background: #fff; margin-bottom: 15px; border-radius: 10px; cursor: pointer; border: 1px solid rgba(108, 37, 134, 0.1); box-shadow: 0 4px 10px rgba(0,0,0,0.03); transition: 0.3s; }
@@ -105,7 +186,6 @@
         .footer-info a { color: var(--magenta); text-decoration: none; font-weight: bold; margin: 0 10px; display: inline-block; transition: 0.3s; }
         .footer-info a:hover { color: #6c2586; }
         
-        /* Кнопки соцсетей */
         .social-links a { display: inline-block; background: var(--cream-pink); color: var(--purple); padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; margin: 10px 5px; border: 1px solid var(--magenta); transition: 0.3s; }
         .social-links a:hover { background: var(--gradient); color: #fff; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(217, 22, 106, 0.2); }
 
@@ -118,29 +198,26 @@
         /* Адаптив */
         @media (max-width: 900px) {
             .grid-2, .consultation-grid, .doctor-card { grid-template-columns: 1fr; flex-direction: column; }
-            /* Поправил отступы главного экрана */
             .hero { padding: 110px 0 50px; }
             h1 { font-size: 32px; margin-bottom: 10px; } 
-            
             .section-title { font-size: 26px; margin-bottom: 30px; word-wrap: break-word; hyphens: auto; }
-            
             .header-inner { flex-direction: row; justify-content: space-between; align-items: center; padding: 5px 10px; }
             .logo { max-width: 70%; text-align: left; }
             .logo img { max-height: 35px; }
-            
             .hamburger { display: block; margin-left: auto; }
             .nav-menu { position: fixed; right: -100%; top: 0; flex-direction: column; background: var(--cream-light); width: 250px; height: 100vh; padding-top: 80px; align-items: center; border-left: 2px solid #6c2586; box-shadow: -5px 0 15px rgba(0,0,0,0.1); }
             .nav-menu.active { right: 0; }
             .nav-menu li { width: 100%; text-align: center; }
             .nav-menu a { display: block; padding: 15px; font-size: 18px; }
-            
             .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             .hamburger.active span:nth-child(2) { opacity: 0; }
             .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
             .swiper { height: 350px; }
-            /* Расширил рамки консультации на мобилке */
             .consultation-box { padding: 30px 15px; }
+        }
+        @media (max-width: 600px) {
+            .reviews-grid { grid-template-columns: 1fr; }
+            .review-card { padding: 25px 20px; }
         }
     </style>
 </head>
@@ -157,6 +234,7 @@
                 <li><a href="#results">Результаты</a></li>
                 <li><a href="#consult">Консультация</a></li>
                 <li><a href="#doctor">О враче</a></li>
+                <li><a href="#reviews">Отзывы</a></li>
                 <li><a href="#faq">Вопросы</a></li>
                 <li><a href="#contacts">Контакты</a></li>
             </ul>
@@ -178,11 +256,11 @@
                 <div class="benefits-card">
                     <h3 style="color: #6c2586; margin-bottom: 20px; font-size: 22px; text-align: center;">Преимущества процедуры:</h3>
                     <ul class="benefits-list">
-    <li><strong>Эффект хирургической подтяжки</strong> без скальпеля и повреждений кожи</li>
-    <li><strong>Подтягивает овал лица, поднимает скулы</strong>, убирает «брыли» и второй подбородок, разглаживает глубокие морщины</li>
-    <li><strong>Результат держится до 2 лет</strong>, нарастая в течение первых 2-3 месяцев</li>
-    <li><strong>Безопасно. Без боли и реабилитации</strong></li>
-</ul>
+                        <li><strong>Эффект хирургической подтяжки</strong> без скальпеля и повреждений кожи</li>
+                        <li><strong>Подтягивает овал лица, поднимает скулы</strong>, убирает «брыли» и второй подбородок, разглаживает глубокие морщины</li>
+                        <li><strong>Результат держится до 2 лет</strong>, нарастая в течение первых 2-3 месяцев</li>
+                        <li><strong>Безопасно. Без боли и реабилитации</strong></li>
+                    </ul>
                 </div>
                 <div style="text-align: center;">
                     <p style="font-size: 18px; margin-bottom: 20px; font-weight: 600;">Единственная аппаратная методика, дающая реальный лифтинг-эффект с сохранением вашей естественной красоты.</p>
@@ -192,7 +270,7 @@
         </div>
     </section>
 
-   <section class="section bg-pink" id="results">
+    <section class="section bg-pink" id="results">
         <div class="container text-center">
             <h2 class="section-title">Результаты <br><span>До и После</span></h2>
             
@@ -225,11 +303,10 @@
                 
                 <p style="font-size: 18px; font-weight: 700; text-align: center; color: var(--magenta); line-height: 1.4;">И все это – за одну процедуру! <br>Результат виден сразу, окончательно формируется в течении 2-3 месяцев и радует вас около 2 лет!</p>
             </div>
-
         </div>
     </section>
 
-  <section class="section bg-light" id="consult">
+    <section class="section bg-light" id="consult">
         <div class="container">
             <div class="consultation-box">
                 <h2 class="section-title" style="margin-bottom: 30px;">Что будет на <br><span>бесплатной консультации?</span></h2>
@@ -288,6 +365,67 @@
         </div>
     </section>
 
+    <!-- === НОВЫЙ БЛОК: ОТЗЫВЫ 2ГИС === -->
+    <section class="section bg-light" id="reviews">
+        <div class="container">
+            <h2 class="section-title">Отзывы наших клиентов</h2>
+            
+            <div class="reviews-grid">
+                <!-- Карточка отзыва 1 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">М</div>
+                            <div>
+                                <div class="reviewer-name">Мария</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-rating">★★★★★</div>
+                    <div class="review-text">
+                        Думала что в 52 года уже поздно что то менять, процедуры какие то делать. Как же я ошибалась! Пришла просто из интереса на бесплатную консультацию и все таки решила попробовать. Сделала смас и уколы ботокса. Прошел всего месяц, а результат уже просто восхитительный! Огромное спасибо Юлии Сергеевне и её золотым ручкам!
+                    </div>
+                </div>
+
+                <!-- Карточка отзыва 2 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">Н</div>
+                            <div>
+                                <div class="reviewer-name">Наталья</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-rating">★★★★★</div>
+                    <div class="review-text">
+                        Замечательная клиника, была тут в первый раз по рекомендации подруги, делала процедуру Смас- лифтинг. Осталась очень довольна и обслуживанием и результатом.
+                    </div>
+                </div>
+
+                <!-- Карточка отзыва 3 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">О</div>
+                            <div>
+                                <div class="reviewer-name">Ольга</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-rating">★★★★★</div>
+                    <div class="review-text">
+                        Полгода назад сделала процедуру смас лифтинга лица и шеи в этой клинике. И сказать, что я довольна - ничего не сказать! Результат я увидела сразу после процедуры, а спустя несколько месяцев - просто восторг! Кожа ровненькая, подтянутая и просто сияет изнутри, исчезли ужасные брыли и второй подбородок! Очень благодарна Юлии Сергеевне, что посоветовала мне именно эту процедуру.
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+            </div>
+        </div>
+    </section>
+    <!-- === КОНЕЦ БЛОКА ОТЗЫВОВ === -->
+
     <section class="section bg-light" id="faq">
         <div class="container">
             <h2 class="section-title">Ответы на <span>частые вопросы</span></h2>
@@ -345,7 +483,7 @@
             <h2 style="margin-bottom: 5px; font-size: 28px; color: #6c2586;">Запишитесь на процедуру</h2>
             <p style="margin-bottom: 25px; font-size: 18px; font-weight: 600; color: var(--magenta);">SMAS-лифтинг</p>
             
-            <script src="https://forms.yandex.ru/_static/embed.js"></script>
+       8     <script src="https://forms.yandex.ru/_static/embed.js"></script>
             <iframe src="https://forms.yandex.ru/cloud/6a310e306d2d732105fd2961/?iframe=1" frameborder="0" name="ya-form-6a310e306d2d732105fd2961" width="100%"></iframe>
         </div>
     </div>
@@ -353,7 +491,6 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
     <script>
-        // --- ОСТАЛЬНЫЕ СКРИПТЫ ---
         const modal = document.getElementById("bookingModal");
         function openModal() { modal.style.display = "block"; }
         function closeModal() { modal.style.display = "none"; }
